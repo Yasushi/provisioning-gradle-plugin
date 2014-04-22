@@ -33,6 +33,7 @@ class ProvisioningProject {
     String lang = "en_US.UTF-8"
     String keyboard = "us"
     String timezone = "Etc/GMT"
+    String preInstall
     String postInstall
     Boolean poweroff = Boolean.FALSE
 
