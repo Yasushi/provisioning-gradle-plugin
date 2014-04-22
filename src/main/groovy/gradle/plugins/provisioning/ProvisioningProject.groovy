@@ -18,6 +18,7 @@ package gradle.plugins.provisioning
 import gradle.plugins.provisioning.aws.AwsDeployConfiguration
 import gradle.plugins.provisioning.internal.dependencies.Packages
 import gradle.plugins.provisioning.internal.disk.Partitioning
+import gradle.plugins.provisioning.internal.firewall.Firewall
 import gradle.plugins.provisioning.internal.network.Networking
 import gradle.plugins.provisioning.tasks.VirtualBoxProvisioningTask
 import gradle.plugins.provisioning.tasks.aws.AmazonProvisioningTask
@@ -37,6 +38,7 @@ class ProvisioningProject {
 
     Partitioning partitioning
     Networking networking
+    Firewall firewall
     Packages packages
 
     Project project
@@ -56,6 +58,11 @@ class ProvisioningProject {
     void network(Action<Networking> action) {
         this.networking = new Networking()
         action.execute networking
+    }
+
+    void firewall(Action<Firewall> action) {
+        this.firewall = new Firewall()
+        action.execute firewall
     }
 
     void packages(Action<Packages> action) {
